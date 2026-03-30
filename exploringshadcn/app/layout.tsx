@@ -3,6 +3,8 @@ import "./globals.css";
 import { Inter, Raleway } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme/theme-provider"
+import AppSideBar from "@/components/web/AppSideBar";
+import Navbar from "@/components/web/Navbar";
 
 const ralewayHeading = Raleway({ subsets: ['latin'], variable: '--font-heading' });
 
@@ -23,14 +25,20 @@ export default function RootLayout({
       lang="en" className={cn("font-sans", inter.variable, ralewayHeading.variable)}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <AppSideBar />
+          <main className="w-full">
+            <Navbar />
+            <div className="px-4">
+              {children}
+            </div>
+          </main>
         </ThemeProvider>
       </body>
     </html>
