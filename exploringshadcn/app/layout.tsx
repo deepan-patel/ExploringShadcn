@@ -4,7 +4,12 @@ import { Inter, Raleway } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import AppSideBar from "@/components/web/AppSideBar";
+
 import Navbar from "@/components/web/Navbar";
+import { TooltipProvider } from "@/components/ui/tooltip"
+import { SidebarProvider } from "@/components/ui/sidebar"
+
+import { cookies } from "next/headers";
 
 const ralewayHeading = Raleway({ subsets: ['latin'], variable: '--font-heading' });
 
@@ -15,11 +20,15 @@ export const metadata: Metadata = {
   description: "Exploring Shadcn UI",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const cookieStore = await cookies();
+  const defaultOpen = cookieStore.get("sidebar_state")?.value === "true";
+
   return (
     <html
       lang="en" className={cn("font-sans", inter.variable, ralewayHeading.variable)}
@@ -32,14 +41,19 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <AppSideBar />
-          <main className="w-full">
-            <Navbar />
-            <div className="px-4">
-              {children}
-            </div>
-          </main>
+          <SidebarProvider defaultOpen={defaultOpen}>
+            <TooltipProvider>
+              <AppSideBar />
+              <main className="w-full">
+                <Navbar />
+                <div className="px-4">
+                  {children}
+                </div>
+              </main>
+            </TooltipProvider>
+          </SidebarProvider>
         </ThemeProvider>
+
       </body>
     </html>
   );
