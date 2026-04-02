@@ -106,7 +106,7 @@ export default function CardList({ title }: { title: string }) {
                         return (
                             <Card key={item.id} className="flex flex-row items-center gap-2">
                                 <CardHeader className="relative w-12 h-12 overflow-hidden ml-2">
-                                    <Image src={item.image} alt={item.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="rounded-md object-cover" />
+                                    <Image src={item.image} alt={item.title} fill className="rounded-md object-cover" />
                                 </CardHeader>
                                 <CardContent className="flex flex-1 flex-col gap-2">
                                     <CardTitle>{item.title}</CardTitle>

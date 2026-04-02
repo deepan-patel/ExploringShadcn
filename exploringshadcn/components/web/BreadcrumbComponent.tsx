@@ -1,5 +1,7 @@
 "use client"
 
+import React from "react"
+
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -24,14 +26,24 @@ export default function BreadcrumbComponent() {
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     {pathSegments.map((segment, index) => (
-                        <div key={index}>
-                            <BreadcrumbItem>
-                                <BreadcrumbLink href={`/${pathSegments.slice(0, index + 1).join("/")}`}>
-                                    {segment}
-                                </BreadcrumbLink>
-                            </BreadcrumbItem>
-                            {index < pathSegments.length - 1 && <BreadcrumbSeparator />}
-                        </div>
+                        <React.Fragment key={index}>
+                            {index < pathSegments.length - 1 &&
+                                <>
+                                    <BreadcrumbItem>
+                                        <BreadcrumbLink href={`/${pathSegments.slice(0, index + 1).join("/")}`}>
+                                            {segment}
+                                        </BreadcrumbLink>
+                                    </BreadcrumbItem>
+                                    <BreadcrumbSeparator />
+                                </>
+                            }
+
+                            {index === pathSegments.length - 1 && (
+                                <BreadcrumbItem>
+                                    <BreadcrumbPage>{segment}</BreadcrumbPage>
+                                </BreadcrumbItem>
+                            )}
+                        </React.Fragment>
                     ))}
                 </BreadcrumbList>
             </Breadcrumb>
