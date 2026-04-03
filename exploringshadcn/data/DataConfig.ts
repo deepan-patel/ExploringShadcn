@@ -1,8 +1,13 @@
 import { SidebarItems } from "@/types/types";
-import { LayoutDashboard, Settings, Calendar } from "lucide-react";
+import { LayoutDashboard, Settings, Calendar, Home } from "lucide-react";
 
 
 export const sidebarItems: SidebarItems = [
+    {
+        title: "Home",
+        href: "/",
+        icon: Home
+    },
     {
         title: "Dashboard",
         href: "/dashboard",
@@ -19,3 +24,8 @@ export const sidebarItems: SidebarItems = [
         icon: Calendar
     }
 ];
+
+export const userRoles = [
+    "user",
+    "admin",
+]
