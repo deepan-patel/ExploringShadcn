@@ -24,3 +24,8 @@ export const sidebarItems: SidebarItems = [
         icon: Calendar
     }
 ];
+
+export const userRoles = [
+    "user",
+    "admin",
+]

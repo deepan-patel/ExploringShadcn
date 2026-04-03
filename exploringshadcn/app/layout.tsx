@@ -8,6 +8,7 @@ import AppSideBar from "@/components/web/AppSideBar";
 import Navbar from "@/components/web/Navbar";
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { SidebarProvider } from "@/components/ui/sidebar"
+import { Toaster } from "@/components/ui/sonner"
 
 import { cookies } from "next/headers";
 
@@ -48,6 +49,7 @@ export default async function RootLayout({
                 <Navbar />
                 <div className="px-4">
                   {children}
+                  <Toaster />
                 </div>
               </main>
             </TooltipProvider>
