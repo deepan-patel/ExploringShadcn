@@ -11,6 +11,8 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+import Link from "next/link";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Settings, User, LogOut } from "lucide-react";
 
@@ -30,7 +32,7 @@ export default function AvatarComponent() {
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>
                         <User />
-                        Profile
+                        <Link href="/users/deepanpatel">Profile</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                         <Settings />
