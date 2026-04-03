@@ -9,7 +9,7 @@ export default function Navbar() {
         <nav className="flex flex-row justify-between p-4 items-center sticky bg-background z-10 top-0">
             <SidebarTrigger />
             <div className="flex flex-row items-center gap-4">
-                <Link href="/dashboard">Dashboard</Link>
+                <Link href="/">Dashboard</Link>
                 <ThemeToggle />
                 <AvatarComponent />
             </div>
